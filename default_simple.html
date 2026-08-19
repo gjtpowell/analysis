@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Analysis Visualizations</title>
+	<h3><i>Experimental generations using Python based on slowly building underlying datasets</i></h3>
+	<style>
+		ul { list-style-type: none; padding-left: 0; }
+	</style>
+</head>
+<body>
+
+	<h1>Insurance</h1>
+	<ul>
+		<li><a href="insurance/claim_handling_efficiency_by_state_comparison.png">claim_handling_efficiency_by_state_comparison</a></li>
+		<li><a href="insurance/claim_handling_efficiency_by_state_cost_vs_severity.png">claim_handling_efficiency_by_state_cost_vs_severity</a></li>
+		<li><a href="insurance/claim_handling_efficiency_by_state_inefficiency.png">claim_handling_efficiency_by_state_inefficiency</a></li>
+		<li><a href="insurance/claim_handling_efficiency_by_state_volume_vs_gap.png">claim_handling_efficiency_by_state_volume_vs_gap</a></li>
+		<li><a href="insurance/claims_escalation_triage_workflow.png">claims_escalation_triage_workflow</a></li>
+		<li><a href="insurance/claims_handling_efficiency_by_state_comparison.png">claims_handling_efficiency_by_state_comparison</a></li>
+		<li><a href="insurance/claims_handling_efficiency_by_state_cost_vs_severity.png">claims_handling_efficiency_by_state_cost_vs_severity</a></li>
+		<li><a href="insurance/claims_handling_efficiency_by_state_inefficiency.png">claims_handling_efficiency_by_state_inefficiency</a></li>
+		<li><a href="insurance/claims_handling_efficiency_by_state_volume_vs_gap.png">claims_handling_efficiency_by_state_volume_vs_gap</a></li>
+		<li><a href="insurance/flood_risk_segmentation_by_zip_code.png">flood_risk_segmentation_by_zip_code</a></li>
+		<li><a href="insurance/top_climate_property_mispricing_regions.png">top_climate_property_mispricing_regions</a></li>
+		<li><a href="insurance/top_insurance_blind_spot_regions_bar.png">top_insurance_blind_spot_regions_bar</a></li>
+		<li><a href="insurance/top_insurance_blind_spot_regions_scatter.png">top_insurance_blind_spot_regions_scatter</a></li>
+		<li><a href="insurance/top_sentiment_reality_disconnect_bar.png">top_sentiment_reality_disconnect_bar</a></li>
+		<li><a href="insurance/top_sentiment_reality_disconnect_line.png">top_sentiment_reality_disconnect_line</a></li>
+	</ul>
+
+	<h1>Property</h1>
+	<ul>
+		<li><a href="property/arizona_phoenix/city_residential_risk_profile_air_pollution.png">arizona_phoenix/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/arizona_phoenix/city_residential_risk_profile_climate_weather.png">arizona_phoenix/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/arizona_phoenix/city_residential_risk_profile_demographics.png">arizona_phoenix/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/arizona_phoenix/city_residential_risk_profile_flood_insurance.png">arizona_phoenix/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/arizona_phoenix/city_residential_risk_profile_permits.png">arizona_phoenix/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/arizona_phoenix/city_residential_risk_profile_property_loss.png">arizona_phoenix/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/california_mountain_view/city_residential_risk_profile_air_pollution.png">california_mountain_view/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/california_mountain_view/city_residential_risk_profile_climate_weather.png">california_mountain_view/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/california_mountain_view/city_residential_risk_profile_demographics.png">california_mountain_view/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/california_mountain_view/city_residential_risk_profile_flood_insurance.png">california_mountain_view/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/california_mountain_view/city_residential_risk_profile_permits.png">california_mountain_view/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/california_mountain_view/city_residential_risk_profile_property_loss.png">california_mountain_view/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/california_san_francisco/city_residential_risk_profile_air_pollution.png">california_san_francisco/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/california_san_francisco/city_residential_risk_profile_climate_weather.png">california_san_francisco/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/california_san_francisco/city_residential_risk_profile_demographics.png">california_san_francisco/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/california_san_francisco/city_residential_risk_profile_flood_insurance.png">california_san_francisco/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/california_san_francisco/city_residential_risk_profile_permits.png">california_san_francisco/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/california_san_francisco/city_residential_risk_profile_property_loss.png">california_san_francisco/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/city_residential_permit_mix.png">city_residential_permit_mix</a></li>
+		<li><a href="property/city_residential_risk_profile_air_pollution.png">city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/city_residential_risk_profile_climate_weather.png">city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/city_residential_risk_profile_flood_insurance.png">city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/city_residential_risk_profile_permits.png">city_residential_risk_profile_permits</a></li>
+		<li><a href="property/colorado_denver/city_residential_risk_profile_air_pollution.png">colorado_denver/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/colorado_denver/city_residential_risk_profile_climate_weather.png">colorado_denver/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/colorado_denver/city_residential_risk_profile_demographics.png">colorado_denver/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/colorado_denver/city_residential_risk_profile_flood_insurance.png">colorado_denver/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/colorado_denver/city_residential_risk_profile_permits.png">colorado_denver/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/colorado_denver/city_residential_risk_profile_property_loss.png">colorado_denver/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/flood_loss_exposure_by_state.png">flood_loss_exposure_by_state</a></li>
+		<li><a href="property/florida_jacksonville/city_residential_risk_profile_air_pollution.png">florida_jacksonville/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/florida_jacksonville/city_residential_risk_profile_climate_weather.png">florida_jacksonville/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/florida_jacksonville/city_residential_risk_profile_demographics.png">florida_jacksonville/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/florida_jacksonville/city_residential_risk_profile_flood_insurance.png">florida_jacksonville/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/florida_jacksonville/city_residential_risk_profile_permits.png">florida_jacksonville/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/florida_jacksonville/city_residential_risk_profile_property_loss.png">florida_jacksonville/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/florida_midway/city_residential_risk_profile_air_pollution.png">florida_midway/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/florida_midway/city_residential_risk_profile_climate_weather.png">florida_midway/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/florida_midway/city_residential_risk_profile_demographics.png">florida_midway/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/florida_midway/city_residential_risk_profile_flood_insurance.png">florida_midway/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/florida_midway/city_residential_risk_profile_permits.png">florida_midway/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/florida_midway/city_residential_risk_profile_property_loss.png">florida_midway/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/florida_tampa/city_residential_risk_profile_air_pollution.png">florida_tampa/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/florida_tampa/city_residential_risk_profile_climate_weather.png">florida_tampa/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/florida_tampa/city_residential_risk_profile_demographics.png">florida_tampa/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/florida_tampa/city_residential_risk_profile_flood_insurance.png">florida_tampa/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/florida_tampa/city_residential_risk_profile_permits.png">florida_tampa/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/florida_tampa/city_residential_risk_profile_property_loss.png">florida_tampa/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/high_home_value_counties_with_high_hail_risk.png">high_home_value_counties_with_high_hail_risk</a></li>
+		<li><a href="property/high_home_value_states_with_high_hail_risk.png">high_home_value_states_with_high_hail_risk</a></li>
+		<li><a href="property/high_value_cities_with_older_housing_exposure.png">high_value_cities_with_older_housing_exposure</a></li>
+		<li><a href="property/highest_roof_risk_exposure_by_state.png">highest_roof_risk_exposure_by_state</a></li>
+		<li><a href="property/highest_vacancy_rates_by_state.png">highest_vacancy_rates_by_state</a></li>
+		<li><a href="property/massachusetts_boston/city_residential_risk_profile_air_pollution.png">massachusetts_boston/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/massachusetts_boston/city_residential_risk_profile_climate_weather.png">massachusetts_boston/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/massachusetts_boston/city_residential_risk_profile_demographics.png">massachusetts_boston/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/massachusetts_boston/city_residential_risk_profile_flood_insurance.png">massachusetts_boston/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/massachusetts_boston/city_residential_risk_profile_permits.png">massachusetts_boston/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/massachusetts_boston/city_residential_risk_profile_property_loss.png">massachusetts_boston/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/massachusetts_worcester/city_residential_risk_profile_air_pollution.png">massachusetts_worcester/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/massachusetts_worcester/city_residential_risk_profile_climate_weather.png">massachusetts_worcester/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/massachusetts_worcester/city_residential_risk_profile_demographics.png">massachusetts_worcester/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/massachusetts_worcester/city_residential_risk_profile_flood_insurance.png">massachusetts_worcester/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/massachusetts_worcester/city_residential_risk_profile_permits.png">massachusetts_worcester/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/massachusetts_worcester/city_residential_risk_profile_property_loss.png">massachusetts_worcester/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/nevada_las_vegas/city_residential_risk_profile_air_pollution.png">nevada_las_vegas/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/nevada_las_vegas/city_residential_risk_profile_climate_weather.png">nevada_las_vegas/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/nevada_las_vegas/city_residential_risk_profile_demographics.png">nevada_las_vegas/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/nevada_las_vegas/city_residential_risk_profile_flood_insurance.png">nevada_las_vegas/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/nevada_las_vegas/city_residential_risk_profile_permits.png">nevada_las_vegas/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/nevada_las_vegas/city_residential_risk_profile_property_loss.png">nevada_las_vegas/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/north_carolina_charlotte/city_residential_risk_profile_air_pollution.png">north_carolina_charlotte/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/north_carolina_charlotte/city_residential_risk_profile_climate_weather.png">north_carolina_charlotte/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/north_carolina_charlotte/city_residential_risk_profile_demographics.png">north_carolina_charlotte/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/north_carolina_charlotte/city_residential_risk_profile_flood_insurance.png">north_carolina_charlotte/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/north_carolina_charlotte/city_residential_risk_profile_permits.png">north_carolina_charlotte/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/north_carolina_charlotte/city_residential_risk_profile_property_loss.png">north_carolina_charlotte/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/north_carolina_raleigh/city_residential_risk_profile_air_pollution.png">north_carolina_raleigh/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/north_carolina_raleigh/city_residential_risk_profile_climate_weather.png">north_carolina_raleigh/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/north_carolina_raleigh/city_residential_risk_profile_demographics.png">north_carolina_raleigh/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/north_carolina_raleigh/city_residential_risk_profile_flood_insurance.png">north_carolina_raleigh/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/north_carolina_raleigh/city_residential_risk_profile_permits.png">north_carolina_raleigh/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/north_carolina_raleigh/city_residential_risk_profile_property_loss.png">north_carolina_raleigh/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/ohio_oakwood/city_residential_risk_profile_air_pollution.png">ohio_oakwood/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/ohio_oakwood/city_residential_risk_profile_climate_weather.png">ohio_oakwood/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/ohio_oakwood/city_residential_risk_profile_demographics.png">ohio_oakwood/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/ohio_oakwood/city_residential_risk_profile_flood_insurance.png">ohio_oakwood/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/ohio_oakwood/city_residential_risk_profile_permits.png">ohio_oakwood/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/ohio_oakwood/city_residential_risk_profile_property_loss.png">ohio_oakwood/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/older_housing_stock_vs_wind_exposure.png">older_housing_stock_vs_wind_exposure</a></li>
+		<li><a href="property/oldest_housing_stock_by_state.png">oldest_housing_stock_by_state</a></li>
+		<li><a href="property/oregon_portland/city_residential_risk_profile_air_pollution.png">oregon_portland/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/oregon_portland/city_residential_risk_profile_climate_weather.png">oregon_portland/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/oregon_portland/city_residential_risk_profile_demographics.png">oregon_portland/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/oregon_portland/city_residential_risk_profile_flood_insurance.png">oregon_portland/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/oregon_portland/city_residential_risk_profile_permits.png">oregon_portland/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/oregon_portland/city_residential_risk_profile_property_loss.png">oregon_portland/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/owner_occupied_high_value_property_exposure_by_state.png">owner_occupied_high_value_property_exposure_by_state</a></li>
+		<li><a href="property/property_risk_hotspots_by_block.png">property_risk_hotspots_by_block</a></li>
+		<li><a href="property/property_risk_hotspots_by_block_group.png">property_risk_hotspots_by_block_group</a></li>
+		<li><a href="property/property_risk_hotspots_by_zip.png">property_risk_hotspots_by_zip</a></li>
+		<li><a href="property/rhode_island_providence/city_residential_risk_profile_air_pollution.png">rhode_island_providence/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/rhode_island_providence/city_residential_risk_profile_climate_weather.png">rhode_island_providence/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/rhode_island_providence/city_residential_risk_profile_demographics.png">rhode_island_providence/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/rhode_island_providence/city_residential_risk_profile_flood_insurance.png">rhode_island_providence/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/rhode_island_providence/city_residential_risk_profile_permits.png">rhode_island_providence/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/rhode_island_providence/city_residential_risk_profile_property_loss.png">rhode_island_providence/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/state_property_loss_exposure_ranking.png">state_property_loss_exposure_ranking</a></li>
+		<li><a href="property/states_with_older_housing_and_higher_wind_exposure.png">states_with_older_housing_and_higher_wind_exposure</a></li>
+		<li><a href="property/texas_austin/city_residential_risk_profile_air_pollution.png">texas_austin/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/texas_austin/city_residential_risk_profile_climate_weather.png">texas_austin/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/texas_austin/city_residential_risk_profile_demographics.png">texas_austin/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/texas_austin/city_residential_risk_profile_flood_insurance.png">texas_austin/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/texas_austin/city_residential_risk_profile_permits.png">texas_austin/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/texas_austin/city_residential_risk_profile_property_loss.png">texas_austin/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/top_census_tracts_by_hail_loss_exposure.png">top_census_tracts_by_hail_loss_exposure</a></li>
+		<li><a href="property/top_counties_by_wind_loss_exposure.png">top_counties_by_wind_loss_exposure</a></li>
+		<li><a href="property/utah_salt_lake_city/city_residential_risk_profile_air_pollution.png">utah_salt_lake_city/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/utah_salt_lake_city/city_residential_risk_profile_climate_weather.png">utah_salt_lake_city/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/utah_salt_lake_city/city_residential_risk_profile_demographics.png">utah_salt_lake_city/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/utah_salt_lake_city/city_residential_risk_profile_flood_insurance.png">utah_salt_lake_city/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/utah_salt_lake_city/city_residential_risk_profile_permits.png">utah_salt_lake_city/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/utah_salt_lake_city/city_residential_risk_profile_property_loss.png">utah_salt_lake_city/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/washington_seattle/city_residential_risk_profile_air_pollution.png">washington_seattle/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/washington_seattle/city_residential_risk_profile_climate_weather.png">washington_seattle/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/washington_seattle/city_residential_risk_profile_demographics.png">washington_seattle/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/washington_seattle/city_residential_risk_profile_flood_insurance.png">washington_seattle/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/washington_seattle/city_residential_risk_profile_permits.png">washington_seattle/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/washington_seattle/city_residential_risk_profile_property_loss.png">washington_seattle/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/washington_tacoma/city_residential_risk_profile_air_pollution.png">washington_tacoma/city_residential_risk_profile_air_pollution</a></li>
+		<li><a href="property/washington_tacoma/city_residential_risk_profile_climate_weather.png">washington_tacoma/city_residential_risk_profile_climate_weather</a></li>
+		<li><a href="property/washington_tacoma/city_residential_risk_profile_demographics.png">washington_tacoma/city_residential_risk_profile_demographics</a></li>
+		<li><a href="property/washington_tacoma/city_residential_risk_profile_flood_insurance.png">washington_tacoma/city_residential_risk_profile_flood_insurance</a></li>
+		<li><a href="property/washington_tacoma/city_residential_risk_profile_permits.png">washington_tacoma/city_residential_risk_profile_permits</a></li>
+		<li><a href="property/washington_tacoma/city_residential_risk_profile_property_loss.png">washington_tacoma/city_residential_risk_profile_property_loss</a></li>
+		<li><a href="property/wind_loss_exposure_vs_median_home_value.png">wind_loss_exposure_vs_median_home_value</a></li>
+	</ul>
+
+	<h1>Finance</h1>
+	<ul>
+		<li><a href="finance/event_driven_contrarian_stock_signal_event_impact.png">event_driven_contrarian_stock_signal_event_impact</a></li>
+		<li><a href="finance/event_driven_contrarian_stock_signal_outcome.png">event_driven_contrarian_stock_signal_outcome</a></li>
+		<li><a href="finance/event_driven_contrarian_stock_signal_recovery_curve.png">event_driven_contrarian_stock_signal_recovery_curve</a></li>
+		<li><a href="finance/event_driven_contrarian_stock_signal_scatter.png">event_driven_contrarian_stock_signal_scatter</a></li>
+		<li><a href="finance/sentiment_event_lead_signals_region.png">sentiment_event_lead_signals_region</a></li>
+		<li><a href="finance/sentiment_event_lead_signals_time.png">sentiment_event_lead_signals_time</a></li>
+	</ul>
+
+	<h1>Publicservice</h1>
+	<ul>
+		<li><a href="publicservice/san_francisco_zip_community_conditions_community_conditions.png">san_francisco_zip_community_conditions_community_conditions</a></li>
+		<li><a href="publicservice/san_francisco_zip_community_conditions_notable_zip_detail.png">san_francisco_zip_community_conditions_notable_zip_detail</a></li>
+		<li><a href="publicservice/san_francisco_zip_housing_cost_map_housing_cost_map.png">san_francisco_zip_housing_cost_map_housing_cost_map</a></li>
+	</ul>
+
+	<h1>Sentiment (Some Experimentation)</h1>
+	<ul>
+		<li><a href="png/Aggregate_Source.png">Aggregate_Source</a></li>
+		<li><a href="png/anomalyHighlights.png">anomalyHighlights</a></li>
+		<li><a href="png/articleCountBySentiment.png">articleCountBySentiment</a></li>
+		<li><a href="png/articleCountBySentiment2.png">articleCountBySentiment2</a></li>
+		<li><a href="png/biasSentimentEffectOutliers.png">biasSentimentEffectOutliers</a></li>
+		<li><a href="png/byActivity.png">byActivity</a></li>
+		<li><a href="png/byAuthors.png">byAuthors</a></li>
+		<li><a href="png/byCompoundActivity.png">byCompoundActivity</a></li>
+		<li><a href="png/byCountry.png">byCountry</a></li>
+		<li><a href="png/byDay.png">byDay</a></li>
+		<li><a href="png/byDayArea.png">byDayArea</a></li>
+		<li><a href="png/byEconomic.png">byEconomic</a></li>
+		<li><a href="png/byFeed.png">byFeed</a></li>
+		<li><a href="png/byHour.png">byHour</a></li>
+		<li><a href="png/byIndustry.png">byIndustry</a></li>
+		<li><a href="png/byMarketPeriod.png">byMarketPeriod</a></li>
+		<li><a href="png/byMarketPeriodActivity.png">byMarketPeriodActivity</a></li>
+		<li><a href="png/byMarketPeriodSession.png">byMarketPeriodSession</a></li>
+		<li><a href="png/byOverall.png">byOverall</a></li>
+		<li><a href="png/byRegion.png">byRegion</a></li>
+		<li><a href="png/byRegionCountry.png">byRegionCountry</a></li>
+		<li><a href="png/bySource.png">bySource</a></li>
+		<li><a href="png/bySourceArea.png">bySourceArea</a></li>
+		<li><a href="png/byTemporal.png">byTemporal</a></li>
+		<li><a href="png/byTopic.png">byTopic</a></li>
+		<li><a href="png/Correlation_Analysis.png">Correlation_Analysis</a></li>
+		<li><a href="png/Feed_Comparison_v1.png">Feed_Comparison_v1</a></li>
+		<li><a href="png/Feed_Comparison_v2.png">Feed_Comparison_v2</a></li>
+		<li><a href="png/feedComparison.png">feedComparison</a></li>
+		<li><a href="png/frequencySideBySide.png">frequencySideBySide</a></li>
+		<li><a href="png/frequencyTopBottom.png">frequencyTopBottom</a></li>
+		<li><a href="png/Geographic_Insights.png">Geographic_Insights</a></li>
+		<li><a href="png/geoSentiment.png">geoSentiment</a></li>
+		<li><a href="png/Overall_Sentiment.png">Overall_Sentiment</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_sources_and_feeds.ALL.png">plotDetectOverallSpikes.plot_sources_and_feeds.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_sources_and_feeds.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_sources_and_feeds.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_sources_and_feeds.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_sources_and_feeds.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_sources_and_feeds.Rolling_Deviation.png">plotDetectOverallSpikes.plot_sources_and_feeds.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_sources_and_feeds.Z-Score.png">plotDetectOverallSpikes.plot_sources_and_feeds.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_feeds.ALL.png">plotDetectOverallSpikes.plot_spike_feeds.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_feeds.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spike_feeds.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_feeds.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spike_feeds.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_feeds.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spike_feeds.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_feeds.Z-Score.png">plotDetectOverallSpikes.plot_spike_feeds.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_sources.ALL.png">plotDetectOverallSpikes.plot_spike_sources.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_sources.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spike_sources.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_sources.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spike_sources.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_sources.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spike_sources.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spike_sources.Z-Score.png">plotDetectOverallSpikes.plot_spike_sources.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_curved_over_time.ALL.png">plotDetectOverallSpikes.plot_spikes_curved_over_time.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_curved_over_time.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spikes_curved_over_time.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_curved_over_time.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spikes_curved_over_time.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_curved_over_time.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spikes_curved_over_time.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_curved_over_time.Z-Score.png">plotDetectOverallSpikes.plot_spikes_curved_over_time.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_over_time.ALL.png">plotDetectOverallSpikes.plot_spikes_over_time.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_over_time.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spikes_over_time.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_over_time.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spikes_over_time.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_over_time.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spikes_over_time.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_over_time.Z-Score.png">plotDetectOverallSpikes.plot_spikes_over_time.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.ALL.png">plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Z-Score.png">plotDetectOverallSpikes.plot_spikes_scatter_plus_regression.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_sources_area_distribution.ALL.png">plotDetectOverallSpikes.plot_spikes_sources_area_distribution.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Z-Score.png">plotDetectOverallSpikes.plot_spikes_sources_area_distribution.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.ALL.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Z-Score.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_boxplot.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.ALL.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Rolling_Deviation.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Z-Score.png">plotDetectOverallSpikes.plot_spikes_top_4_sources_histogram.Z-Score</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_top20_max_spikes.ALL.png">plotDetectOverallSpikes.plot_top20_max_spikes.ALL</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_top20_max_spikes.Median_Absolute_Deviation.png">plotDetectOverallSpikes.plot_top20_max_spikes.Median_Absolute_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_top20_max_spikes.Point-to-Point_Change.png">plotDetectOverallSpikes.plot_top20_max_spikes.Point-to-Point_Change</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_top20_max_spikes.Rolling_Deviation.png">plotDetectOverallSpikes.plot_top20_max_spikes.Rolling_Deviation</a></li>
+		<li><a href="png/plotDetectOverallSpikes.plot_top20_max_spikes.Z-Score.png">plotDetectOverallSpikes.plot_top20_max_spikes.Z-Score</a></li>
+		<li><a href="png/publisherRanking.png">publisherRanking</a></li>
+		<li><a href="png/Sentiment_Distribution.png">Sentiment_Distribution</a></li>
+		<li><a href="png/Sentiment_Over_Time.png">Sentiment_Over_Time</a></li>
+		<li><a href="png/Sentiment_Scoring_Aggregation.png">Sentiment_Scoring_Aggregation</a></li>
+		<li><a href="png/sentimentByTopic.png">sentimentByTopic</a></li>
+		<li><a href="png/sentimentDistribution.png">sentimentDistribution</a></li>
+		<li><a href="png/sentimentDistribution2.png">sentimentDistribution2</a></li>
+		<li><a href="png/sentimentOverTime.png">sentimentOverTime</a></li>
+		<li><a href="png/spike_boxplot_by_source.png">spike_boxplot_by_source</a></li>
+		<li><a href="png/spike_distribution_by_source_area.png">spike_distribution_by_source_area</a></li>
+		<li><a href="png/spike_distributions_by_source.png">spike_distributions_by_source</a></li>
+		<li><a href="png/Token_Insights_v1.png">Token_Insights_v1</a></li>
+		<li><a href="png/Token_Insights_v2.png">Token_Insights_v2</a></li>
+		<li><a href="png/top_counties_by_wind_loss_exposure.png">top_counties_by_wind_loss_exposure</a></li>
+		<li><a href="png/Top_Tokens_By_Sentiment.png">Top_Tokens_By_Sentiment</a></li>
+		<li><a href="png/Top_Trending_Topics.png">Top_Trending_Topics</a></li>
+		<li><a href="png/topSentimentKeywords.png">topSentimentKeywords</a></li>
+		<li><a href="png/trendingTopicsOverTime.png">trendingTopicsOverTime</a></li>
+		<li><a href="png/trendingTopicsOverTime2.png">trendingTopicsOverTime2</a></li>
+	</ul>
+
+	<h1>Analytics</h1>
+	<ul>
+		<li><a href="analytics/demographics_data_quality_curate_heatmap.png">demographics_data_quality_curate_heatmap</a></li>
+		<li><a href="analytics/demographics_data_quality_raw_heatmap.png">demographics_data_quality_raw_heatmap</a></li>
+		<li><a href="analytics/missing_data_quality_pct_missing.png">missing_data_quality_pct_missing</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_all.png">missing_data_quality_scatter_all</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_last_10_years.png">missing_data_quality_scatter_last_10_years</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_last_1_year.png">missing_data_quality_scatter_last_1_year</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_last_2_years.png">missing_data_quality_scatter_last_2_years</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_last_5_years.png">missing_data_quality_scatter_last_5_years</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_since_1925.png">missing_data_quality_scatter_since_1925</a></li>
+		<li><a href="analytics/missing_data_quality_scatter_since_1955.png">missing_data_quality_scatter_since_1955</a></li>
+		<li><a href="analytics/states_state_counts_heatmap.png">states_state_counts_heatmap</a></li>
+	</ul>
+</body>
+</html>
