@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Architecture & Modeling</title>
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #1f2933; line-height: 1.5; }
+a { color: inherit; text-decoration: none; }
+.hero { background: linear-gradient(135deg, #15263c, #244b72); color: white; padding: 52px 24px 46px 24px; }
+.hero-inner { max-width: 1280px; margin: 0 auto; }
+.hero h1 { font-size: 40px; margin: 0 0 14px 0; line-height: 1.1; }
+.hero p { font-size: 18px; max-width: 980px; margin: 0; color: #e5edf5; }
+.hero-tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-tag { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 20px; padding: 7px 13px; font-size: 14px; color: white; }
+.hero-tag:hover { background: rgba(255,255,255,0.22); }
+.container { max-width: 1280px; margin: 0 auto; padding: 38px 24px 60px 24px; }
+.section { margin-bottom: 54px; }
+.section-title { font-size: 30px; margin: 0 0 8px 0; color: #172b4d; }
+.section-description { color: #52616b; margin: 0 0 24px 0; font-size: 16px; max-width: 1080px; }
+.card { background: white; border: 1px solid #dde3e8; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); overflow: hidden; }
+.diagram-card { padding: 18px; }
+.schema-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.diagram-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.metadata-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.schema-card img, .diagram-card img { width: 100%; height: auto; display: block; background: #f8fafb; }
+.schema-card img { height: 540px; object-fit: contain; border-bottom: 1px solid #e5e9ed; }
+.schema-content { padding: 18px 20px 20px 20px; }
+.schema-content h3 { margin: 0 0 8px 0; font-size: 20px; color: #1d4f7a; }
+.schema-content p { margin: 0; color: #52616b; font-size: 15px; }
+.diagram-content { padding: 18px 20px 20px 20px; border-top: 1px solid #e5e9ed; }
+.diagram-content h3 { margin: 0 0 8px 0; font-size: 22px; color: #1d4f7a; }
+.diagram-content p { margin: 0; color: #52616b; font-size: 15px; }
+.image-link { display: block; cursor: pointer; }
+.image-link:hover img { opacity: 0.96; }
+.image-note { margin-top: 10px; font-size: 13px; color: #6b7785; }
+.metadata-card { padding: 20px; }
+.metadata-card h3 { margin: 0 0 6px 0; color: #1d4f7a; font-size: 20px; }
+.metadata-card p { margin: 0 0 16px 0; color: #52616b; font-size: 14px; }
+.table-scroll { overflow-x: auto; overflow-y: auto; max-height: 560px; border: 1px solid #c8d1d9; border-radius: 6px; background: white; }
+.sample-scroll { max-height: none; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; white-space: nowrap; }
+.data-table th { position: sticky; top: 0; background: #e7edf2; color: #243746; text-align: left; font-weight: bold; border: 1px solid #c4ced6; padding: 8px 10px; z-index: 2; }
+.data-table td { border: 1px solid #d4dce2; padding: 7px 10px; color: #33434f; }
+.data-table tbody tr:nth-child(even) { background: #f7f9fa; }
+.data-table tbody tr:hover { background: #eaf2f7; }
+.metadata-card .data-table td:first-child { text-align: right; color: #6b7785; width: 60px; }
+.sample-card { padding: 20px; }
+.sample-card h3 { margin: 0 0 6px 0; color: #1d4f7a; font-size: 20px; }
+.sample-card p { margin: 0 0 16px 0; color: #52616b; font-size: 14px; }
+.footer { text-align: center; color: #7b8791; font-size: 13px; padding: 25px; }
+.disclaimer { text-align: center; font-size: 13px; color: #333; background: white; border-top: 1px solid #d8e0e6; padding: 10px 20px; }
+@media (max-width: 900px) {
+    .schema-grid, .metadata-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 650px) {
+    .hero { padding: 38px 20px; }
+    .hero h1 { font-size: 32px; }
+    .container { padding: 28px 16px 45px 16px; }
+    .schema-card img { height: auto; }
+}
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="hero-inner">
+<h1>Data Architecture & Modeling</h1>
+<p>The platform is organized as a layered analytical warehouse so source data can be acquired, preserved, cleaned, standardized, reused and combined without collapsing everything into one processing layer. Census data follows a dedicated load-to-curate-to-dimensions path, while other subject areas move through incremental seeds, raw storage, curated models and reusable dimensions before feeding subject marts, cross-domain integration models and downstream analytics.</p>
+<div class="hero-tags">
+<a class="hero-tag" href="index.html">Portfolio Home</a>
+<a class="hero-tag" href="#architecture">Architecture</a>
+<a class="hero-tag" href="#schemas">Schemas</a>
+<a class="hero-tag" href="#integration-diagrams">Integration Diagrams</a>
+<a class="hero-tag" href="#table-examples">Table Examples</a>
+<a class="hero-tag" href="#sample-data">Sample Data</a>
+</div>
+</div>
+</section>
+
+<main class="container">
+
+<section class="section" id="architecture">
+<h2 class="section-title">Layered Platform Architecture</h2>
+<p class="section-description">The architecture separates source acquisition, immutable raw storage, reusable dimensions, curated subject data, subject-area marts and downstream analytics while allowing selected raw and curated datasets to support direct analytical work where appropriate.</p>
+<div class="card diagram-card">
+<a class="image-link" href="images/workflow.png" target="_blank"><img src="images/workflow.png" alt="Layered data platform architecture"></a>
+<div class="diagram-content">
+<h3>Platform Workflow</h3>
+<p>High-level platform flow showing the Census pathway, the fact-data pathway, subject-area marts and downstream analytics consumption.</p>
+<div class="image-note">Click the image to open the full-size version in a new window.</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="schemas">
+<h2 class="section-title">Schema Structure</h2>
+<p class="section-description">Representative PostgreSQL schema views showing how the physical implementation maps to the layered architecture.</p>
+<div class="schema-grid">
+
+<div class="card schema-card">
+<a class="image-link" href="images/load_schema.png" target="_blank"><img src="images/load_schema.png" alt="Load schema"></a>
+<div class="schema-content"><h3>load</h3><p>Landing and preparation layer used heavily for Census and related source structures before downstream conforming and dimensional modeling.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/seeds_schema.png" target="_blank"><img src="images/seeds_schema.png" alt="Seeds schema"></a>
+<div class="schema-content"><h3>seeds</h3><p>Incremental and reference datasets used to capture source changes and support repeatable loading into the raw layer.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/raw_schema.png" target="_blank"><img src="images/raw_schema.png" alt="Raw schema"></a>
+<div class="schema-content"><h3>raw</h3><p>Source-aligned landing tables that preserve incoming data before downstream cleaning, standardization and modeling.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/dimensions_schema.png" target="_blank"><img src="images/dimensions_schema.png" alt="Dimensions schema"></a>
+<div class="schema-content"><h3>dimensions</h3><p>Reusable geographic, Census, lookup and descriptive dimensions shared across subject areas and analytical models.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/curate_schema.png" target="_blank"><img src="images/curate_schema.png" alt="Curate schema"></a>
+<div class="schema-content"><h3>curate</h3><p>Cleaned, standardized and enriched subject-area tables and views prepared for reuse in analytical models.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/property_schema.png" target="_blank"><img src="images/property_schema.png" alt="Property schema"></a>
+<div class="schema-content"><h3>property</h3><p>Property-focused analytical tables combining claims, disasters, flood risk, policies, loss exposure and related measures.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/integration_schema.png" target="_blank"><img src="images/integration_schema.png" alt="Integration schema"></a>
+<div class="schema-content"><h3>integration</h3><p>Cross-domain analytical models that combine multiple curated subject areas into business-facing marts and integrated risk, claims, market and geographic outputs.</p></div>
+</div>
+
+<div class="card schema-card">
+<a class="image-link" href="images/sentiment_schemas.png" target="_blank"><img src="images/sentiment_schemas.png" alt="Sentiment schemas"></a>
+<div class="schema-content"><h3>sentiment / sentiment_classification / sentiment_temporal</h3><p>Sentiment-focused structures covering tokenized views, aggregated sentiment outputs, classification groupings and temporal rollups.</p></div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="integration-diagrams">
+<h2 class="section-title">Query-Based Integration Diagrams</h2>
+<p class="section-description">These diagrams were mapped from actual SQL logic to show how selected models are built from curated datasets, transformations and joins.</p>
+<div class="diagram-grid">
+
+<div class="card diagram-card">
+<a class="image-link" href="images/city_new_residential_risk_exposure.png" target="_blank"><img src="images/city_new_residential_risk_exposure.png" alt="City new residential risk exposure integration diagram"></a>
+<div class="diagram-content">
+<h3>integration.city_new_residential_risk_exposure</h3>
+<p>Cross-dataset fact integration showing how permits, air pollution, NOAA, fires, weather alerts, multiple loss properties, NFIP claims and NFIP policies are aggregated and joined by state, county and city within the latest 12-month permit window.</p>
+<div class="image-note">Click the image to open the full-size version in a new window.</div>
+</div>
+</div>
+
+<div class="card diagram-card">
+<a class="image-link" href="images/stocks_strategy.png" target="_blank"><img src="images/stocks_strategy.png" alt="Stocks strategy SQL logic diagram"></a>
+<div class="diagram-content">
+<h3>curate.stocks_strategy</h3>
+<p>Strategy-building flow showing source stock data, calculation steps, rule evaluation and final output flags for momentum and sniper signals.</p>
+<div class="image-note">Click the image to open the full-size version in a new window.</div>
+</div>
+</div>
+
+<div class="card diagram-card">
+<a class="image-link" href="images/climate_property_divergence.png" target="_blank"><img src="images/climate_property_divergence.png" alt="Climate property divergence SQL logic diagram"></a>
+<div class="diagram-content">
+<h3>curate.climate_property_divergence</h3>
+<p>Joined model showing how fire activity, weather alerts and Zillow property trends are standardized and compared to produce state-level divergence scoring.</p>
+<div class="image-note">Click the image to open the full-size version in a new window.</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="table-examples">
+<h2 class="section-title">Representative Analytical Tables</h2>
+<p class="section-description">Representative metadata from two integrated analytical models. The tables show the physical column structure and PostgreSQL data types behind the analytical outputs.</p>
+<div class="metadata-grid">
+
+<div class="card metadata-card">
+<h3>integration.city_new_residential_risk_exposure</h3>
+<p>87 columns · City-level integration of permits, demographics, property exposure, climate, fire, weather, repetitive loss, NFIP claims and NFIP policy data.</p>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>#</th><th>Column</th><th>Data Type</th></tr></thead><tbody><tr><td>1</td><td>country</td><td>text</td></tr><tr><td>2</td><td>state</td><td>text</td></tr><tr><td>3</td><td>region</td><td>text</td></tr><tr><td>4</td><td>county</td><td>text</td></tr><tr><td>5</td><td>city</td><td>text</td></tr><tr><td>6</td><td>permit_period_start</td><td>date</td></tr><tr><td>7</td><td>permit_period_end</td><td>date</td></tr><tr><td>8</td><td>total_population</td><td>numeric</td></tr><tr><td>9</td><td>housing_units_total</td><td>numeric</td></tr><tr><td>10</td><td>median_household_income</td><td>numeric</td></tr><tr><td>11</td><td>median_home_value</td><td>numeric</td></tr><tr><td>12</td><td>median_year_structure_built</td><td>numeric</td></tr><tr><td>13</td><td>pre_1980_housing_rate</td><td>numeric</td></tr><tr><td>14</td><td>latest_12m_permitted_value</td><td>numeric</td></tr><tr><td>15</td><td>latest_12m_permitted_units</td><td>bigint</td></tr><tr><td>16</td><td>latest_12m_permitted_buildings</td><td>bigint</td></tr><tr><td>17</td><td>latest_12m_1_unit_value</td><td>numeric</td></tr><tr><td>18</td><td>latest_12m_1_unit_units</td><td>bigint</td></tr><tr><td>19</td><td>latest_12m_2_unit_value</td><td>numeric</td></tr><tr><td>20</td><td>latest_12m_2_unit_units</td><td>bigint</td></tr><tr><td>21</td><td>latest_12m_3_4_unit_value</td><td>numeric</td></tr><tr><td>22</td><td>latest_12m_3_4_unit_units</td><td>bigint</td></tr><tr><td>23</td><td>latest_12m_5_plus_unit_value</td><td>numeric</td></tr><tr><td>24</td><td>latest_12m_5_plus_unit_units</td><td>bigint</td></tr><tr><td>25</td><td>air_quality_observation_days</td><td>bigint</td></tr><tr><td>26</td><td>unhealthy_air_quality_days</td><td>bigint</td></tr><tr><td>27</td><td>very_unhealthy_air_quality_days</td><td>bigint</td></tr><tr><td>28</td><td>average_daily_max_aqi</td><td>numeric</td></tr><tr><td>29</td><td>maximum_aqi</td><td>integer</td></tr><tr><td>30</td><td>maximum_air_severity_score</td><td>integer</td></tr><tr><td>31</td><td>fire_detection_count</td><td>numeric</td></tr><tr><td>32</td><td>fire_detection_days</td><td>bigint</td></tr><tr><td>33</td><td>high_confidence_fire_detection_count</td><td>numeric</td></tr><tr><td>34</td><td>average_fire_radiative_power</td><td>numeric</td></tr><tr><td>35</td><td>total_fire_radiative_power</td><td>numeric</td></tr><tr><td>36</td><td>maximum_fire_radiative_power</td><td>double precision</td></tr><tr><td>37</td><td>noaa_observation_months</td><td>bigint</td></tr><tr><td>38</td><td>extreme_heat_months</td><td>bigint</td></tr><tr><td>39</td><td>freezing_months</td><td>bigint</td></tr><tr><td>40</td><td>precipitation_months_over_25_4_mm</td><td>bigint</td></tr><tr><td>41</td><td>snowfall_months</td><td>bigint</td></tr><tr><td>42</td><td>maximum_temperature_centigrade</td><td>numeric</td></tr><tr><td>43</td><td>minimum_temperature_centigrade</td><td>numeric</td></tr><tr><td>44</td><td>average_temperature_centigrade</td><td>numeric</td></tr><tr><td>45</td><td>total_precipitation_mm</td><td>numeric</td></tr><tr><td>46</td><td>total_snowfall_mm</td><td>numeric</td></tr><tr><td>47</td><td>maximum_windspeed_gust</td><td>numeric</td></tr><tr><td>48</td><td>weather_alert_count</td><td>bigint</td></tr><tr><td>49</td><td>severe_weather_alert_count</td><td>bigint</td></tr><tr><td>50</td><td>flood_alert_count</td><td>bigint</td></tr><tr><td>51</td><td>tornado_alert_count</td><td>bigint</td></tr><tr><td>52</td><td>hurricane_tropical_alert_count</td><td>bigint</td></tr><tr><td>53</td><td>reported_weather_damage</td><td>numeric</td></tr><tr><td>54</td><td>maximum_weather_impact_score</td><td>smallint</td></tr><tr><td>55</td><td>multiple_loss_property_count</td><td>bigint</td></tr><tr><td>56</td><td>multiple_loss_snapshot_date</td><td>date</td></tr><tr><td>57</td><td>nfip_repetitive_loss_property_count</td><td>bigint</td></tr><tr><td>58</td><td>nfip_severe_repetitive_loss_property_count</td><td>bigint</td></tr><tr><td>59</td><td>fma_repetitive_loss_property_count</td><td>bigint</td></tr><tr><td>60</td><td>fma_severe_repetitive_loss_property_count</td><td>bigint</td></tr><tr><td>61</td><td>severe_repetitive_loss_property_count</td><td>bigint</td></tr><tr><td>62</td><td>nfip_claim_count</td><td>bigint</td></tr><tr><td>63</td><td>earliest_nfip_claim_date</td><td>date</td></tr><tr><td>64</td><td>latest_nfip_claim_date</td><td>date</td></tr><tr><td>65</td><td>total_nfip_building_claim_payments</td><td>real</td></tr><tr><td>66</td><td>total_nfip_contents_claim_payments</td><td>real</td></tr><tr><td>67</td><td>total_nfip_increased_compliance_payments</td><td>real</td></tr><tr><td>68</td><td>total_nfip_claim_payments</td><td>real</td></tr><tr><td>69</td><td>total_claimed_property_value</td><td>numeric</td></tr><tr><td>70</td><td>average_claim_water_depth</td><td>numeric</td></tr><tr><td>71</td><td>maximum_claim_water_depth</td><td>numeric</td></tr><tr><td>72</td><td>latest_12m_policy_count</td><td>numeric</td></tr><tr><td>73</td><td>latest_12m_building_coverage</td><td>numeric</td></tr><tr><td>74</td><td>latest_12m_contents_coverage</td><td>numeric</td></tr><tr><td>75</td><td>latest_12m_total_nfip_coverage</td><td>numeric</td></tr><tr><td>76</td><td>latest_12m_total_nfip_premium</td><td>numeric</td></tr><tr><td>77</td><td>latest_12m_total_policy_cost</td><td>numeric</td></tr><tr><td>78</td><td>estimated_existing_housing_value</td><td>numeric</td></tr><tr><td>79</td><td>permitted_value_to_existing_housing_value</td><td>numeric</td></tr><tr><td>80</td><td>permitted_units_per_1000_housing_units</td><td>numeric</td></tr><tr><td>81</td><td>multiple_loss_properties_per_1000_housing_units</td><td>numeric</td></tr><tr><td>82</td><td>estimated_new_permitted_flood_loss_proxy</td><td>numeric</td></tr><tr><td>83</td><td>historical_nfip_paid_loss_ratio</td><td>numeric</td></tr><tr><td>84</td><td>nfip_claim_payments_per_housing_unit</td><td>numeric</td></tr><tr><td>85</td><td>recent_climate_hazard_indicator_count</td><td>bigint</td></tr><tr><td>86</td><td>created_utc</td><td>timestamp with time zone</td></tr><tr><td>87</td><td>integration_id</td><td>bigint</td></tr></tbody></table></div>
+</div>
+
+<div class="card metadata-card">
+<h3>integration.claims_escalation_triage</h3>
+<p>86 columns · Claims triage model combining event severity, prior loss, repetitive loss, property exposure, business interruption, recovery indicators, policy information and disaster context.</p>
+<div class="table-scroll"><table class="data-table"><thead><tr><th>#</th><th>Column</th><th>Data Type</th></tr></thead><tbody><tr><td>1</td><td>rank</td><td>bigint</td></tr><tr><td>2</td><td>event_date</td><td>date</td></tr><tr><td>3</td><td>state</td><td>text</td></tr><tr><td>4</td><td>county</td><td>text</td></tr><tr><td>5</td><td>census_tract</td><td>character varying</td></tr><tr><td>6</td><td>tract_geoid</td><td>text</td></tr><tr><td>7</td><td>county_geoid</td><td>text</td></tr><tr><td>8</td><td>tract</td><td>text</td></tr><tr><td>9</td><td>area_name</td><td>text</td></tr><tr><td>10</td><td>event_type</td><td>text</td></tr><tr><td>11</td><td>event_score</td><td>integer</td></tr><tr><td>12</td><td>prior_loss_score</td><td>integer</td></tr><tr><td>13</td><td>repetitive_loss_score</td><td>integer</td></tr><tr><td>14</td><td>property_exposure_score</td><td>integer</td></tr><tr><td>15</td><td>business_interruption_proxy_score</td><td>integer</td></tr><tr><td>16</td><td>recovery_delay_proxy_score</td><td>integer</td></tr><tr><td>17</td><td>recovery_complexity_score</td><td>numeric</td></tr><tr><td>18</td><td>complexity_tier</td><td>text</td></tr><tr><td>19</td><td>recommended_action</td><td>text</td></tr><tr><td>20</td><td>why_flagged</td><td>text</td></tr><tr><td>21</td><td>event_severity_availability</td><td>text</td></tr><tr><td>22</td><td>event_severity_data_status</td><td>text</td></tr><tr><td>23</td><td>county_alert_context_availability</td><td>text</td></tr><tr><td>24</td><td>county_alert_context_data_status</td><td>text</td></tr><tr><td>25</td><td>prior_loss_availability</td><td>text</td></tr><tr><td>26</td><td>prior_loss_data_status</td><td>text</td></tr><tr><td>27</td><td>repetitive_loss_availability</td><td>text</td></tr><tr><td>28</td><td>repetitive_loss_data_status</td><td>text</td></tr><tr><td>29</td><td>property_exposure_availability</td><td>text</td></tr><tr><td>30</td><td>property_exposure_data_status</td><td>text</td></tr><tr><td>31</td><td>business_interruption_availability</td><td>text</td></tr><tr><td>32</td><td>business_interruption_data_status</td><td>text</td></tr><tr><td>33</td><td>recovery_delay_availability</td><td>text</td></tr><tr><td>34</td><td>recovery_delay_data_status</td><td>text</td></tr><tr><td>35</td><td>utility_access_disruption_availability</td><td>text</td></tr><tr><td>36</td><td>utility_access_disruption_data_status</td><td>text</td></tr><tr><td>37</td><td>local_repair_capacity_availability</td><td>text</td></tr><tr><td>38</td><td>local_repair_capacity_data_status</td><td>text</td></tr><tr><td>39</td><td>insured_location_availability</td><td>text</td></tr><tr><td>40</td><td>insured_location_data_status</td><td>text</td></tr><tr><td>41</td><td>open_claim_status_availability</td><td>text</td></tr><tr><td>42</td><td>open_claim_status_data_status</td><td>text</td></tr><tr><td>43</td><td>policy_terms_availability</td><td>text</td></tr><tr><td>44</td><td>policy_terms_data_status</td><td>text</td></tr><tr><td>45</td><td>reserve_history_availability</td><td>text</td></tr><tr><td>46</td><td>reserve_history_data_status</td><td>text</td></tr><tr><td>47</td><td>dispute_litigation_signal_availability</td><td>text</td></tr><tr><td>48</td><td>dispute_litigation_signal_data_status</td><td>text</td></tr><tr><td>49</td><td>max_precipitation_mm</td><td>bigint</td></tr><tr><td>50</td><td>max_windspeed_gust</td><td>integer</td></tr><tr><td>51</td><td>max_windspeed_avg</td><td>numeric</td></tr><tr><td>52</td><td>max_snowfall_mm</td><td>bigint</td></tr><tr><td>53</td><td>max_snowdepth_mm</td><td>integer</td></tr><tr><td>54</td><td>min_temp_centigrade</td><td>numeric</td></tr><tr><td>55</td><td>max_temp_centigrade</td><td>numeric</td></tr><tr><td>56</td><td>noaa_observation_count</td><td>bigint</td></tr><tr><td>57</td><td>county_alert_severity</td><td>text</td></tr><tr><td>58</td><td>county_alert_group</td><td>text</td></tr><tr><td>59</td><td>county_alert_type</td><td>text</td></tr><tr><td>60</td><td>county_alert_impact_score</td><td>integer</td></tr><tr><td>61</td><td>county_alert_count</td><td>bigint</td></tr><tr><td>62</td><td>claim_count_10yr</td><td>numeric</td></tr><tr><td>63</td><td>total_paid_10yr</td><td>real</td></tr><tr><td>64</td><td>repetitive_loss_property_count</td><td>bigint</td></tr><tr><td>65</td><td>total_repetitive_losses</td><td>numeric</td></tr><tr><td>66</td><td>policy_count</td><td>numeric</td></tr><tr><td>67</td><td>building_coverage</td><td>numeric</td></tr><tr><td>68</td><td>contents_coverage</td><td>numeric</td></tr><tr><td>69</td><td>policy_building_replacement_cost</td><td>numeric</td></tr><tr><td>70</td><td>small_business_policy_count</td><td>numeric</td></tr><tr><td>71</td><td>nonprofit_policy_count</td><td>numeric</td></tr><tr><td>72</td><td>state_owned_policy_count</td><td>numeric</td></tr><tr><td>73</td><td>median_home_value</td><td>integer</td></tr><tr><td>74</td><td>median_year_structure_built</td><td>integer</td></tr><tr><td>75</td><td>median_structure_age</td><td>integer</td></tr><tr><td>76</td><td>expected_annual_loss_score</td><td>real</td></tr><tr><td>77</td><td>expected_annual_loss_rating</td><td>character varying</td></tr><tr><td>78</td><td>expected_annual_loss_building</td><td>real</td></tr><tr><td>79</td><td>annualized_loss_ratio_building</td><td>real</td></tr><tr><td>80</td><td>annualized_loss_ratio_national_percentile</td><td>real</td></tr><tr><td>81</td><td>disaster_count_5yr</td><td>bigint</td></tr><tr><td>82</td><td>recent_disaster_type</td><td>text</td></tr><tr><td>83</td><td>most_recent_disaster_date</td><td>date</td></tr><tr><td>84</td><td>most_recent_claim_month</td><td>date</td></tr><tr><td>85</td><td>most_recent_repetitive_loss_date</td><td>date</td></tr><tr><td>86</td><td>marts_utc</td><td>timestamp with time zone</td></tr></tbody></table></div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="sample-data">
+<h2 class="section-title">Sample Data</h2>
+<p class="section-description">Current representative records from <strong>integration.city_new_residential_risk_exposure</strong>. Data is retrieved directly from PostgreSQL when this page is generated.</p>
+<div class="card sample-card">
+<h3>City New Residential Risk Exposure</h3>
+<p>Selected records showing demographic, housing, permit, environmental, insurance and loss information within the same analytical model.</p>
+<div class="table-scroll sample-scroll"><table class="data-table"><thead><tr><th>data_through_date</th><th>refreshed_utc</th><th>state</th><th>county</th><th>city</th><th>total_population</th><th>median_home_value</th><th>latest_12m_permitted_value</th><th>unhealthy_air_quality_days</th><th>fire_detection_days</th><th>severe_weather_alert_count</th><th>multiple_loss_property_count</th><th>nfip_claim_count</th><th>latest_12m_policy_count</th><th>recent_climate_hazard_indicator_count</th></tr></thead><tbody><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Delaware</td><td>Kent</td><td>Dover</td><td>46</td><td>222,900</td><td>45,475,745</td><td>0</td><td>0</td><td>0</td><td>7</td><td>0</td><td>113</td><td>4</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Delaware</td><td>New Castle</td><td>New Castle</td><td>18,779</td><td>311,500</td><td>18,948,558</td><td>0</td><td>0</td><td>0</td><td>13</td><td>4</td><td>831</td><td>0</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Delaware</td><td>New Castle</td><td>Newark</td><td>145</td><td>395,900</td><td>200,000</td><td>4</td><td>0</td><td>0</td><td>24</td><td>2</td><td>206</td><td>12</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Delaware</td><td>New Castle</td><td>Wilmington</td><td>59</td><td>660,800</td><td>24,460,678</td><td>6</td><td>0</td><td>0</td><td>99</td><td>1</td><td>370</td><td>14</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Florida</td><td>Alachua</td><td>Gainesville</td><td>75</td><td>363,500</td><td>209,416,675</td><td>0</td><td>0</td><td>0</td><td>13</td><td>0</td><td>542</td><td>7</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Florida</td><td>Alachua</td><td>High Springs</td><td>46</td><td>360,000</td><td>15,075,095</td><td>0</td><td>0</td><td>0</td><td>5</td><td>0</td><td>30</td><td>0</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Florida</td><td>Baker</td><td>Macclenny</td><td>14,611</td><td>286,100</td><td>1,334,000</td><td>0</td><td>0</td><td>0</td><td>9</td><td>0</td><td>55</td><td>0</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Florida</td><td>Bay</td><td>Panama City</td><td>16</td><td>362,200</td><td>90,272,455</td><td>1</td><td>0</td><td>0</td><td>295</td><td>2</td><td>6,331</td><td>9</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Florida</td><td>Bay</td><td>Panama City Beach</td><td>36</td><td>455,700</td><td>38,057,348</td><td>0</td><td>0</td><td>0</td><td>161</td><td>0</td><td>11,356</td><td>7</td></tr><tr><td>2026-04-01</td><td>2026-08-22 23:16 UTC</td><td>Florida</td><td>Brevard</td><td>Cape Canaveral</td><td>56</td><td>365,400</td><td>429,152</td><td>0</td><td>0</td><td>0</td><td>5</td><td>0</td><td>4,831</td><td>1</td></tr></tbody></table></div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+Python • SQL • PostgreSQL • Snowflake • dbt • Geospatial • Public Data • Data Science • ChatGPT • Claude • Gemini • Local LLMs • AI Automation
+<br>
+<a href="https://www.linkedin.com/in/datawarehouse-subject-matter-expert/" target="_blank">Gavin Powell on LinkedIn</a>
+</footer>
+
+<div class="disclaimer">
+For informational and research purposes only. Not investment advice. No trading or investment decisions should be made solely from this analysis. © 2025-2026 Gavin Powell. All rights reserved.
+</div>
+
+</body>
+</html>
