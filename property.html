@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property | Data Analysis &amp; Integration Portfolio</title>
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #1f2933; line-height: 1.5; }
+a { color: inherit; }
+.hero { background: linear-gradient(135deg, #15263c, #244b72); color: white; padding: 58px 24px 52px 24px; }
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero h1 { font-size: 42px; margin: 0 0 14px 0; line-height: 1.1; }
+.hero p { font-size: 19px; max-width: 900px; margin: 0 0 18px 0; color: #e5edf5; }
+.hero-tags { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-tag { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 20px; padding: 7px 13px; font-size: 14px; color: white; text-decoration: none; }
+.hero-tag:hover { background: rgba(255,255,255,0.22); }
+.browse-wrapper { background: white; border-bottom: 1px solid #d8e0e6; }
+.browse { max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.browse-category-title { font-weight: 700; color: #174f7c; text-decoration: none; }
+.browse-category-title:hover { text-decoration: underline; }
+.container { max-width: 1200px; margin: 0 auto; padding: 38px 24px 60px 24px; }
+.section { margin-bottom: 54px; scroll-margin-top: 20px; }
+.section-title { font-size: 30px; margin: 0 0 8px 0; color: #172b4d; }
+.section-description { color: #52616b; margin: 0 0 24px 0; font-size: 16px; }
+.capability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 18px; }
+.capability-card { background: white; padding: 22px; border-radius: 10px; border: 1px solid #dde3e8; box-shadow: 0 2px 8px rgba(0,0,0,0.04); scroll-margin-top: 20px; }
+.capability-card h3 { margin: 0 0 9px 0; font-size: 19px; color: #1d4f7a; }
+.capability-card p { margin: 0; color: #55636f; font-size: 14px; }
+.problem-list { background: white; border: 1px solid #dde3e8; border-radius: 10px; padding: 22px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.problem-list ul { margin: 0; padding-left: 22px; }
+.problem-list li { margin: 8px 0; color: #465762; }
+.demo { background: #e9f2f8; border-left: 5px solid #1d5f8a; border-radius: 8px; padding: 25px 28px; scroll-margin-top: 20px; }
+.demo h2 { margin: 0 0 8px 0; color: #174f7c; font-size: 25px; }
+.demo p { margin: 0; color: #435865; font-size: 17px; max-width: 900px; }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.process-card { background: white; border: 1px solid #dde3e8; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.process-card h3 { margin: 0 0 13px 0; color: #1d4f7a; font-size: 20px; }
+.process-card ul { margin: 0; padding-left: 19px; }
+.process-card li { margin: 6px 0; color: #52616b; }
+.category { margin-top: 52px; scroll-margin-top: 20px; }
+.category-header { border-bottom: 2px solid #d9e1e8; padding-bottom: 11px; margin-bottom: 24px; }
+.category-header h2 { margin: 0 0 6px 0; font-size: 29px; color: #172b4d; }
+.category-header p { margin: 0; color: #64727d; }
+.group { margin-bottom: 36px; scroll-margin-top: 20px; }
+.group h3 { font-size: 21px; color: #294f70; margin: 0 0 15px 0; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 20px; }
+.visual-card { background: white; border: 1px solid #dde3e8; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.visual-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.09); }
+.visual-card a { text-decoration: none; }
+.visual-card img { width: 100%; height: 190px; object-fit: contain; background: #f8fafb; display: block; border-bottom: 1px solid #e5e9ed; }
+.visual-title { padding: 13px 15px 15px 15px; font-size: 15px; font-weight: 600; color: #22384d; }
+.view-all { display: inline-block; margin-top: 20px; padding: 10px 17px; background: #1d5f8a; color: white; border-radius: 6px; font-weight: 700; text-decoration: none; }
+.view-all:hover { background: #174f7c; }
+.cta { margin-top: 58px; background: #172b4d; color: white; border-radius: 12px; padding: 34px; }
+.cta h2 { margin: 0 0 10px 0; font-size: 27px; }
+.cta p { margin: 0; color: #dce6ef; font-size: 17px; max-width: 850px; }
+.footer { text-align: center; color: #7b8791; font-size: 13px; padding: 25px; }
+.disclaimer { text-align: center; font-size: 13px; color: #333; background: white; border-top: 1px solid #d8e0e6; padding: 10px 20px; }
+@media (max-width: 800px) { .process-grid { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+    .hero { padding: 38px 20px; }
+    .hero h1 { font-size: 33px; }
+    .hero p { font-size: 17px; }
+    .container { padding: 28px 16px 45px 16px; }
+    .browse { padding-left: 16px; padding-right: 16px; }
+    .gallery { grid-template-columns: 1fr; }
+    .visual-card img { height: auto; }
+}
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="hero-inner">
+<h1>Property</h1>
+<p>Property and location analysis combining housing, permits, demographics, flood, weather, environmental and loss data at city, ZIP and other geographic levels.</p>
+<div class="hero-tags"><a class="hero-tag" href="index.html">Portfolio Home</a></div>
+</div>
+</section>
+<div class="browse-wrapper">
+<div class="browse">
+<a class="browse-category-title" href="insurance.html">Insurance</a>
+<a class="browse-category-title" href="finance.html">Finance</a>
+<a class="browse-category-title" href="public_service.html">Public Service</a>
+<a class="browse-category-title" href="property.html">Property</a>
+<a class="browse-category-title" href="sentiment.html">Sentiment</a>
+<a class="browse-category-title" href="analytics.html">Analytics</a>
+
+</div>
+</div>
+<main class="container">
+<section class="section">
+<p class="section-description" style="color: red; font-style: italic;">The underlying data pipelines and visualizations are refreshed automatically each day as new source data becomes available.</p>
+<div class="group" id="group-property-arizona-phoenix">
+<h3>Arizona Phoenix</h3>
+<div class="gallery">
+<div class="visual-card">
+<a href="property/arizona_phoenix/city_residential_risk_profile_air_pollution.png" target="_blank">
+<img src="property/arizona_phoenix/city_residential_risk_profile_air_pollution.png" alt="Air Pollution" loading="lazy">
+<div class="visual-title">Air Pollution</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/arizona_phoenix/city_residential_risk_profile_climate_weather.png" target="_blank">
+<img src="property/arizona_phoenix/city_residential_risk_profile_climate_weather.png" alt="Climate Weather" loading="lazy">
+<div class="visual-title">Climate Weather</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/arizona_phoenix/city_residential_risk_profile_demographics.png" target="_blank">
+<img src="property/arizona_phoenix/city_residential_risk_profile_demographics.png" alt="Demographics" loading="lazy">
+<div class="visual-title">Demographics</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/arizona_phoenix/city_residential_risk_profile_flood_insurance.png" target="_blank">
+<img src="property/arizona_phoenix/city_residential_risk_profile_flood_insurance.png" alt="Flood Insurance" loading="lazy">
+<div class="visual-title">Flood Insurance</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/arizona_phoenix/city_residential_risk_profile_permits.png" target="_blank">
+<img src="property/arizona_phoenix/city_residential_risk_profile_permits.png" alt="Permits" loading="lazy">
+<div class="visual-title">Permits</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/arizona_phoenix/city_residential_risk_profile_property_loss.png" target="_blank">
+<img src="property/arizona_phoenix/city_residential_risk_profile_property_loss.png" alt="Property Loss" loading="lazy">
+<div class="visual-title">Property Loss</div>
+</a>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="gallery">
+<div class="visual-card">
+<a href="property/city_residential_permit_mix.png" target="_blank">
+<img src="property/city_residential_permit_mix.png" alt="Permit Mix" loading="lazy">
+<div class="visual-title">Permit Mix</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/high_home_value_counties_with_high_hail_risk.png" target="_blank">
+<img src="property/high_home_value_counties_with_high_hail_risk.png" alt="High Home Value Counties With High Hail Risk" loading="lazy">
+<div class="visual-title">High Home Value Counties With High Hail Risk</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/high_home_value_states_with_high_hail_risk.png" target="_blank">
+<img src="property/high_home_value_states_with_high_hail_risk.png" alt="High Home Value States With High Hail Risk" loading="lazy">
+<div class="visual-title">High Home Value States With High Hail Risk</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/high_value_cities_with_older_housing_exposure.png" target="_blank">
+<img src="property/high_value_cities_with_older_housing_exposure.png" alt="High Value Cities With Older Housing Exposure" loading="lazy">
+<div class="visual-title">High Value Cities With Older Housing Exposure</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/highest_roof_risk_exposure_by_state.png" target="_blank">
+<img src="property/highest_roof_risk_exposure_by_state.png" alt="Highest Roof Risk Exposure By State" loading="lazy">
+<div class="visual-title">Highest Roof Risk Exposure By State</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/highest_vacancy_rates_by_state.png" target="_blank">
+<img src="property/highest_vacancy_rates_by_state.png" alt="Highest Vacancy Rates By State" loading="lazy">
+<div class="visual-title">Highest Vacancy Rates By State</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/older_housing_stock_vs_wind_exposure.png" target="_blank">
+<img src="property/older_housing_stock_vs_wind_exposure.png" alt="Older Housing Stock Vs Wind Exposure" loading="lazy">
+<div class="visual-title">Older Housing Stock Vs Wind Exposure</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/oldest_housing_stock_by_state.png" target="_blank">
+<img src="property/oldest_housing_stock_by_state.png" alt="Oldest Housing Stock By State" loading="lazy">
+<div class="visual-title">Oldest Housing Stock By State</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/owner_occupied_high_value_property_exposure_by_state.png" target="_blank">
+<img src="property/owner_occupied_high_value_property_exposure_by_state.png" alt="Owner Occupied High Value Property Exposure By State" loading="lazy">
+<div class="visual-title">Owner Occupied High Value Property Exposure By State</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/property_risk_hotspots_by_block.png" target="_blank">
+<img src="property/property_risk_hotspots_by_block.png" alt="Property Risk Hotspots By Block" loading="lazy">
+<div class="visual-title">Property Risk Hotspots By Block</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/property_risk_hotspots_by_block_group.png" target="_blank">
+<img src="property/property_risk_hotspots_by_block_group.png" alt="Property Risk Hotspots By Block Group" loading="lazy">
+<div class="visual-title">Property Risk Hotspots By Block Group</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/property_risk_hotspots_by_zip.png" target="_blank">
+<img src="property/property_risk_hotspots_by_zip.png" alt="Property Risk Hotspots By Zip" loading="lazy">
+<div class="visual-title">Property Risk Hotspots By Zip</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/states_with_older_housing_and_higher_wind_exposure.png" target="_blank">
+<img src="property/states_with_older_housing_and_higher_wind_exposure.png" alt="States With Older Housing And Higher Wind Exposure" loading="lazy">
+<div class="visual-title">States With Older Housing And Higher Wind Exposure</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/top_counties_by_wind_loss_exposure.png" target="_blank">
+<img src="property/top_counties_by_wind_loss_exposure.png" alt="Top Counties By Wind Loss Exposure" loading="lazy">
+<div class="visual-title">Top Counties By Wind Loss Exposure</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/wind_loss_exposure_vs_median_home_value.png" target="_blank">
+<img src="property/wind_loss_exposure_vs_median_home_value.png" alt="Wind Loss Exposure Vs Median Home Value" loading="lazy">
+<div class="visual-title">Wind Loss Exposure Vs Median Home Value</div>
+</a>
+</div>
+</div>
+</div>
+<div class="group" id="group-property-north-carolina-raleigh">
+<h3>North Carolina Raleigh</h3>
+<div class="gallery">
+<div class="visual-card">
+<a href="property/north_carolina_raleigh/city_residential_risk_profile_air_pollution.png" target="_blank">
+<img src="property/north_carolina_raleigh/city_residential_risk_profile_air_pollution.png" alt="Air Pollution" loading="lazy">
+<div class="visual-title">Air Pollution</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/north_carolina_raleigh/city_residential_risk_profile_climate_weather.png" target="_blank">
+<img src="property/north_carolina_raleigh/city_residential_risk_profile_climate_weather.png" alt="Climate Weather" loading="lazy">
+<div class="visual-title">Climate Weather</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/north_carolina_raleigh/city_residential_risk_profile_demographics.png" target="_blank">
+<img src="property/north_carolina_raleigh/city_residential_risk_profile_demographics.png" alt="Demographics" loading="lazy">
+<div class="visual-title">Demographics</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/north_carolina_raleigh/city_residential_risk_profile_flood_insurance.png" target="_blank">
+<img src="property/north_carolina_raleigh/city_residential_risk_profile_flood_insurance.png" alt="Flood Insurance" loading="lazy">
+<div class="visual-title">Flood Insurance</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/north_carolina_raleigh/city_residential_risk_profile_permits.png" target="_blank">
+<img src="property/north_carolina_raleigh/city_residential_risk_profile_permits.png" alt="Permits" loading="lazy">
+<div class="visual-title">Permits</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="property/north_carolina_raleigh/city_residential_risk_profile_property_loss.png" target="_blank">
+<img src="property/north_carolina_raleigh/city_residential_risk_profile_property_loss.png" alt="Property Loss" loading="lazy">
+<div class="visual-title">Property Loss</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+Python • SQL • PostgreSQL • Snowflake • dbt • Geospatial • Public Data • Data Science • ChatGPT • Claude • Gemini • Local LLMs • AI Automation
+<br>
+<a href="https://www.linkedin.com/in/datawarehouse-subject-matter-expert/" target="_blank">Gavin Powell on LinkedIn</a>
+</footer>
+
+<div class="disclaimer">
+For informational and research purposes only. Not investment advice. No trading or investment decisions should be made solely from this analysis. © 2025-2026 Gavin Powell. All rights reserved.
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance | Data Analysis &amp; Integration Portfolio</title>
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; color: #1f2933; line-height: 1.5; }
+a { color: inherit; }
+.hero { background: linear-gradient(135deg, #15263c, #244b72); color: white; padding: 58px 24px 52px 24px; }
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero h1 { font-size: 42px; margin: 0 0 14px 0; line-height: 1.1; }
+.hero p { font-size: 19px; max-width: 900px; margin: 0 0 18px 0; color: #e5edf5; }
+.hero-tags { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-tag { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 20px; padding: 7px 13px; font-size: 14px; color: white; text-decoration: none; }
+.hero-tag:hover { background: rgba(255,255,255,0.22); }
+.browse-wrapper { background: white; border-bottom: 1px solid #d8e0e6; }
+.browse { max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.browse-category-title { font-weight: 700; color: #174f7c; text-decoration: none; }
+.browse-category-title:hover { text-decoration: underline; }
+.container { max-width: 1200px; margin: 0 auto; padding: 38px 24px 60px 24px; }
+.section { margin-bottom: 54px; scroll-margin-top: 20px; }
+.section-title { font-size: 30px; margin: 0 0 8px 0; color: #172b4d; }
+.section-description { color: #52616b; margin: 0 0 24px 0; font-size: 16px; }
+.capability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 18px; }
+.capability-card { background: white; padding: 22px; border-radius: 10px; border: 1px solid #dde3e8; box-shadow: 0 2px 8px rgba(0,0,0,0.04); scroll-margin-top: 20px; }
+.capability-card h3 { margin: 0 0 9px 0; font-size: 19px; color: #1d4f7a; }
+.capability-card p { margin: 0; color: #55636f; font-size: 14px; }
+.problem-list { background: white; border: 1px solid #dde3e8; border-radius: 10px; padding: 22px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.problem-list ul { margin: 0; padding-left: 22px; }
+.problem-list li { margin: 8px 0; color: #465762; }
+.demo { background: #e9f2f8; border-left: 5px solid #1d5f8a; border-radius: 8px; padding: 25px 28px; scroll-margin-top: 20px; }
+.demo h2 { margin: 0 0 8px 0; color: #174f7c; font-size: 25px; }
+.demo p { margin: 0; color: #435865; font-size: 17px; max-width: 900px; }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.process-card { background: white; border: 1px solid #dde3e8; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.process-card h3 { margin: 0 0 13px 0; color: #1d4f7a; font-size: 20px; }
+.process-card ul { margin: 0; padding-left: 19px; }
+.process-card li { margin: 6px 0; color: #52616b; }
+.category { margin-top: 52px; scroll-margin-top: 20px; }
+.category-header { border-bottom: 2px solid #d9e1e8; padding-bottom: 11px; margin-bottom: 24px; }
+.category-header h2 { margin: 0 0 6px 0; font-size: 29px; color: #172b4d; }
+.category-header p { margin: 0; color: #64727d; }
+.group { margin-bottom: 36px; scroll-margin-top: 20px; }
+.group h3 { font-size: 21px; color: #294f70; margin: 0 0 15px 0; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 20px; }
+.visual-card { background: white; border: 1px solid #dde3e8; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.visual-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.09); }
+.visual-card a { text-decoration: none; }
+.visual-card img { width: 100%; height: 190px; object-fit: contain; background: #f8fafb; display: block; border-bottom: 1px solid #e5e9ed; }
+.visual-title { padding: 13px 15px 15px 15px; font-size: 15px; font-weight: 600; color: #22384d; }
+.view-all { display: inline-block; margin-top: 20px; padding: 10px 17px; background: #1d5f8a; color: white; border-radius: 6px; font-weight: 700; text-decoration: none; }
+.view-all:hover { background: #174f7c; }
+.cta { margin-top: 58px; background: #172b4d; color: white; border-radius: 12px; padding: 34px; }
+.cta h2 { margin: 0 0 10px 0; font-size: 27px; }
+.cta p { margin: 0; color: #dce6ef; font-size: 17px; max-width: 850px; }
+.footer { text-align: center; color: #7b8791; font-size: 13px; padding: 25px; }
+.disclaimer { text-align: center; font-size: 13px; color: #333; background: white; border-top: 1px solid #d8e0e6; padding: 10px 20px; }
+@media (max-width: 800px) { .process-grid { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+    .hero { padding: 38px 20px; }
+    .hero h1 { font-size: 33px; }
+    .hero p { font-size: 17px; }
+    .container { padding: 28px 16px 45px 16px; }
+    .browse { padding-left: 16px; padding-right: 16px; }
+    .gallery { grid-template-columns: 1fr; }
+    .visual-card img { height: auto; }
+}
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="hero-inner">
+<h1>Finance</h1>
+<p>Market, economic and event-driven analysis combining price, sentiment and external-event data to identify unusual behavior and recovery patterns.</p>
+<div class="hero-tags"><a class="hero-tag" href="index.html">Portfolio Home</a></div>
+</div>
+</section>
+<div class="browse-wrapper">
+<div class="browse">
+<a class="browse-category-title" href="insurance.html">Insurance</a>
+<a class="browse-category-title" href="finance.html">Finance</a>
+<a class="browse-category-title" href="public_service.html">Public Service</a>
+<a class="browse-category-title" href="property.html">Property</a>
+<a class="browse-category-title" href="sentiment.html">Sentiment</a>
+<a class="browse-category-title" href="analytics.html">Analytics</a>
+
+</div>
+</div>
+<main class="container">
+<section class="section">
+<p class="section-description" style="color: red; font-style: italic;">The underlying data pipelines and visualizations are refreshed automatically each day as new source data becomes available.</p>
+<div class="group">
+<div class="gallery">
+<div class="visual-card">
+<a href="finance/event_driven_contrarian_stock_signal_event_impact.png" target="_blank">
+<img src="finance/event_driven_contrarian_stock_signal_event_impact.png" alt="Event Driven Contrarian Stock Signal Event Impact" loading="lazy">
+<div class="visual-title">Event Driven Contrarian Stock Signal Event Impact</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="finance/event_driven_contrarian_stock_signal_outcome.png" target="_blank">
+<img src="finance/event_driven_contrarian_stock_signal_outcome.png" alt="Event Driven Contrarian Stock Signal Outcome" loading="lazy">
+<div class="visual-title">Event Driven Contrarian Stock Signal Outcome</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="finance/event_driven_contrarian_stock_signal_recovery_curve.png" target="_blank">
+<img src="finance/event_driven_contrarian_stock_signal_recovery_curve.png" alt="Event Driven Contrarian Stock Signal Recovery Curve" loading="lazy">
+<div class="visual-title">Event Driven Contrarian Stock Signal Recovery Curve</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="finance/event_driven_contrarian_stock_signal_scatter.png" target="_blank">
+<img src="finance/event_driven_contrarian_stock_signal_scatter.png" alt="Event Driven Contrarian Stock Signal Scatter" loading="lazy">
+<div class="visual-title">Event Driven Contrarian Stock Signal Scatter</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="finance/sentiment_event_lead_signals_region.png" target="_blank">
+<img src="finance/sentiment_event_lead_signals_region.png" alt="Sentiment Event Lead Signals Region" loading="lazy">
+<div class="visual-title">Sentiment Event Lead Signals Region</div>
+</a>
+</div>
+<div class="visual-card">
+<a href="finance/sentiment_event_lead_signals_time.png" target="_blank">
+<img src="finance/sentiment_event_lead_signals_time.png" alt="Sentiment Event Lead Signals Time" loading="lazy">
+<div class="visual-title">Sentiment Event Lead Signals Time</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="footer">
+Python • SQL • PostgreSQL • Snowflake • dbt • Geospatial • Public Data • Data Science • ChatGPT • Claude • Gemini • Local LLMs • AI Automation
+<br>
+<a href="https://www.linkedin.com/in/datawarehouse-subject-matter-expert/" target="_blank">Gavin Powell on LinkedIn</a>
+</footer>
+
+<div class="disclaimer">
+For informational and research purposes only. Not investment advice. No trading or investment decisions should be made solely from this analysis. © 2025-2026 Gavin Powell. All rights reserved.
+</div>
+</body>
+</html>
